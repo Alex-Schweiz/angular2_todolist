@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import { Component } from "@angular/core";
+import {TodoService} from "../shared/todo.service";
 
 @Component({
     moduleId: module.id,
@@ -8,10 +9,12 @@ import {Component} from "@angular/core";
 })
 
 export class TodoFormComponent {
+    title: string = '';
 
-    newTodoTitle: string = '';
+    constructor(private todoService: TodoService){
+    }
 
-    create(){
-
+    onSubmit(){
+        this.todoService.createTodo(this.title);
     }
 }
